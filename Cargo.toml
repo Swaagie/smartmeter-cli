@@ -1,0 +1,8 @@
+[package]
+name = "smartmeter-cli"
+version = "0.1.0"
+authors = ["Swaagie <info@martijnswaagman.nl>"]
+
+[dependencies]
+clap = "~2.32.0"
+wasm-bindgen = "~0.2.23"
