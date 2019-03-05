@@ -5,10 +5,14 @@ const { Reader, Parser } = require('@smartmeter/core');
 const { cli } = require('cli-ux');
 
 class SmartmeterCliCommand extends Command {
-  tabular(data) {
-    cli.table(Object.keys(data).map(key => ({ value: data.key, key })), {
-      name: {
+  tabular(time, data) {
+    cli.table(Object.keys(data).map(key => ({ value: data[key], key })), {
+      key: {
+        header: 'Energy measurement'
         minWidth: 25
+      },
+      value : {
+        header: 'Value'
       }
     });
   }
