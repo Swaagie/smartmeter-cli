@@ -2,14 +2,25 @@
 
 const { Command, flags } = require('@oclif/command');
 const { Reader, Parser } = require('@smartmeter/core');
+const { cli } = require('cli-ux');
 
 class SmartmeterCliCommand extends Command {
+  tabular(data) {
+    cli.table(Object.keys(data).map(key => ({ value: data.key, key })), {
+      name: {
+        minWidth: 25
+      }
+    });
+  }
+
   async run() {
     const { flags } = this.parse(SmartmeterCliCommand);
     const parser = new Parser();
     const reader = new Reader({
       config: flags.config
     });
+
+    parser.on('parsed', this.tabular);
 
     reader
       .on('error', console.error)
