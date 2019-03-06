@@ -44,7 +44,7 @@ class SmartmeterCliCommand extends Command {
         minWidth: 40
       },
       value: {
-        header: 'Value'
+        header: 'Value',
         minWidth: 10
       },
       unit: {
