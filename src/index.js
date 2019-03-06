@@ -8,13 +8,15 @@ class SmartmeterCliCommand extends Command {
   tabular(time, data) {
     cli.table(Object.keys(data).map(key => ({ value: data[key], key })), {
       key: {
-        header: 'Energy measurement'
+        header: 'Measurement'
         minWidth: 25
       },
       value : {
         header: 'Value'
       }
     });
+
+    this.log('\n');
   }
 
   async run() {
@@ -24,7 +26,7 @@ class SmartmeterCliCommand extends Command {
       config: flags.config
     });
 
-    parser.on('parsed', this.tabular);
+    parser.on('parsed', this.tabular.bind(this));
 
     reader
       .on('error', console.error)
