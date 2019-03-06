@@ -8,7 +8,7 @@ class SmartmeterCliCommand extends Command {
   tabular(time, data) {
     cli.table(Object.keys(data).map(key => ({ value: data[key], key })), {
       key: {
-        header: 'Measurement'
+        header: 'Measurement',
         minWidth: 25
       },
       value : {
