@@ -38,7 +38,7 @@ const hr = {
 
 class SmartmeterCliCommand extends Command {
   tabular(time, data) {
-    cli.table(Object.keys(data).map(key => ({ key: hr[key][title], value: data[key], unit: hr[key][unit] })), {
+    cli.table(Object.keys(data).map(key => ({ key: hr[key].title, value: data[key], unit: hr[key].unit })), {
       key: {
         header: 'Measurement',
         minWidth: 40
